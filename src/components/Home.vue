@@ -11,10 +11,10 @@
     </section>
 
     <div class="container mb-5" v-if="products.length">
-        <div class="row justify-content-start gy-5">
-            <div v-for="(product, index) in products" :key="index" class="col-3" id="bread">
+        <div class="row justify-content-start gx-sm-1 gx-md-2 gx-lg-3 gx-xl-4 gx-xxl-5 gy-4">
+            <div v-for="(product, index) in products" :key="index" class="col-sm-12 col-md-6 col-lg-3" id="bread">
                 <router-link :to="'products/' + product.name">
-                    <div class="card shadow-sm">
+                    <div class="card shadow">
                         <img :src="product.img" :alt="product.displayName" class="card-image-top" />
                         <div class="card-body">
                             <div class="cart-title">{{ product.displayName }}</div>
@@ -59,11 +59,30 @@ export default {
   color: #fff;
 }
 .hero__body .hero__title {
-  font-size: 10rem;
+  font-size: 5rem;
 }
 .hero__body .hero__description {
-  font-size: 2rem;
+  font-size: 1.4rem;
 }
+
+@media screen and (min-width: 640px) {
+  .hero__body .hero__title {
+    font-size: 8rem;
+  }
+  .hero__body .hero__description {
+    font-size: 1.8rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .hero__body .hero__title {
+    font-size: 10rem;
+  }
+  .hero__body .hero__description {
+    font-size: 2rem;
+  }
+}
+
 .move-enter-from {
   transform: translateY(20px);
   filter: blur(8px);
