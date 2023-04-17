@@ -1,10 +1,12 @@
 <template>
   <section class="hero w-100 d-flex flex-column justify-content-center">
-    <div class="hero-body text-white">
-      <div class="container">
-        <h1 class="h1 title">علیرضا بیکری</h1>
-        <p class="lead description">با کیفیت ترین نان ها با نازلترین قیمت تحویل  درب منزل</p>
-      </div>
+    <div class="hero__body text-white">
+      <Transition name="move" appear>
+        <div class="container">
+          <h1 class="hero__title h1">علیرضا بیکری</h1>
+          <p class="hero__description lead">با کیفیت ترین نان ها با نازلترین قیمت تحویل  درب منزل</p>
+        </div>
+      </Transition>
     </div>
   </section>
 </template>
@@ -23,14 +25,25 @@
   background-position: center;
   background-size: cover;
 }
-.hero-body {
+.hero__body {
   font-family: "Mj Joude", sans-serif, Arial, Helvetica;
   color: #fff;
 }
-.hero-body .title {
+.hero__body .hero__title {
   font-size: 10rem;
 }
-.hero-body .description {
+.hero__body .hero__description {
   font-size: 2rem;
+}
+.move-enter-from {
+  transform: translateY(20px);
+  filter: blur(8px);
+}
+.move-enter-active {
+  transition: transform 0.8s ease, filter 0.8s ease;
+}
+.move-enter-to {
+  transform: translateY(0);
+  filter: blur(0);
 }
 </style>
