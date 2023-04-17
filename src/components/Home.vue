@@ -10,7 +10,7 @@
         </div>
     </section>
 
-    <div class="container mb-5" v-if="products.length">
+    <div class="container mb-5" v-if="products.length" style="min-width: 300px">
         <div class="row justify-content-start gx-sm-1 gx-md-2 gx-lg-3 gx-xl-4 gx-xxl-5 gy-4">
             <div v-for="(product, index) in products" :key="index" class="col-sm-12 col-md-6 col-lg-3" id="bread">
                 <router-link :to="'products/' + product.name">
