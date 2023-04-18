@@ -43,10 +43,6 @@ export default {
   font-family: "Mj Joude";
   src: local("Mj Joude"), url("../assets/fonts/Mj_Joude/Mj_Joude_0.ttf") format("truetype");
 }
-@font-face {
-  font-family: "Far Mitra";
-  src: local("Far Mitra"), url("../assets/fonts/Far_Mitra/Far_Mitra.ttf") format("truetype");
-}
 .hero {
   height: 500px;
   background-image: url("../assets/img/hero-background.jpg");
