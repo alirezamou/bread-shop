@@ -4,8 +4,10 @@ import {
   faIcons,
   faPlus,
   faArrowLeftLong,
+  faTimes,
+  faCartShopping,
 } from "@fortawesome/free-solid-svg-icons";
-library.add(faIcons, faPlus, faArrowLeftLong);
+library.add(faIcons, faPlus, faArrowLeftLong, faTimes, faCartShopping);
 
 export default (app) => {
   app.component("fa-icon", FontAwesomeIcon);
