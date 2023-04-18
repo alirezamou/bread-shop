@@ -83,10 +83,10 @@ export default {
         addToCart() {
             if(this.selectedSize !== null) {
                 const order = {
-                    name: this.product.name,
+                    productName: this.product.name,
                     price: this.totalPrice,
                     quantity: this.quantity,
-                    size: this.selectedSize,
+                    sizeIndex: this.selectedSize,
                 };
                 this.$store.commit("ADD_TO_CART", order);
                 iziToast.success({
