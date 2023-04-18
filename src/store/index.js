@@ -16,8 +16,22 @@ const store = createStore({
     SET_PRODUCTS(state, products) {
       state.products = products;
     },
-    ADD_TO_CART(state, order) {
-      state.cart.push(order);
+    ADD_TO_CART(state, newOrder) {
+      const productInCart = state.cart.find(
+        (cartItem) => cartItem.productName === newOrder.productName
+      );
+      if (productInCart) {
+        if (productInCart.sizeIndex === newOrder.sizeIndex) {
+          productInCart.quantity += newOrder.quantity;
+          productInCart.price += newOrder.price;
+        } else {
+          productInCart.sizeIndex = newOrder.sizeIndex;
+          productInCart.quantity = newOrder.quantity;
+          productInCart.price = newOrder.price;
+        }
+      } else {
+        state.cart.push(newOrder);
+      }
     },
   },
   actions: {
