@@ -11,6 +11,27 @@ const store = createStore({
     getProductByName: (state) => (productName) => {
       return state.products.find((product) => product.name === productName);
     },
+    getSize: (state) => (productName, sizeIndex) => {
+      const product = state.products.find(
+        (product) => product.name == productName
+      );
+      return product.sizes[sizeIndex].size;
+    },
+    getFeePrice: (state) => (productName, sizeIndex) => {
+      const product = state.products.find(
+        (product) => product.name == productName
+      );
+      return product.sizes[sizeIndex].price;
+    },
+    getDisplayName: (state) => (productName) => {
+      return state.products.find((product) => product.name === productName)
+        .displayName;
+    },
+    totalCartPrice: (state) => {
+      return state.cart.reduce((accPrice, currentOrder) => {
+        return accPrice + currentOrder.price * currentOrder.quantity;
+      }, 0);
+    },
   },
   mutations: {
     SET_PRODUCTS(state, products) {
@@ -23,7 +44,6 @@ const store = createStore({
       if (productInCart) {
         if (productInCart.sizeIndex === newOrder.sizeIndex) {
           productInCart.quantity += newOrder.quantity;
-          productInCart.price += newOrder.price;
         } else {
           productInCart.sizeIndex = newOrder.sizeIndex;
           productInCart.quantity = newOrder.quantity;
@@ -32,6 +52,12 @@ const store = createStore({
       } else {
         state.cart.push(newOrder);
       }
+    },
+    DELETE_ITEM_FROM_CART(state, deletingItem) {
+      state.cart.splice(
+        state.cart.findIndex((item) => item === deletingItem),
+        1
+      );
     },
   },
   actions: {
