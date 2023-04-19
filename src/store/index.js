@@ -1,11 +1,14 @@
 import { createStore } from "vuex";
 
 import { getProducts } from "../services/productServices";
+import { addOrder } from "../services/orderServices";
 
 const store = createStore({
   state: {
     products: [],
     cart: [],
+    customer: null,
+    order: null,
   },
   getters: {
     getProductByName: (state) => (productName) => {
@@ -59,8 +62,28 @@ const store = createStore({
         1
       );
     },
+    SET_CUSTOMER(state, customer) {
+      state.customer = JSON.parse(JSON.stringify(customer));
+    },
+    SET_ORDER(state, order) {
+      state.order = order;
+    },
+    CLEAR_CART(state) {
+      state.cart = [];
+    },
   },
   actions: {
+    async addOrder({ commit }, order) {
+      try {
+        await addOrder(order);
+
+        commit("SET_CUSTOMER", order.customer);
+        commit("SET_ORDER", order);
+        commit("CLEAR_CART");
+      } catch (error) {
+        console.log(error);
+      }
+    },
     async getProducts({ commit }) {
       try {
         const products = await getProducts();
