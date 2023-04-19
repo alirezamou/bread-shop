@@ -1,10 +1,4 @@
 <template>
-    <div class="text-end p-3 mb-2" id="return-link">
-        <router-link to="/" class="">
-            بازگشت&nbsp;
-            <fa-icon icon="fa-solid fa-arrow-left-long" />
-        </router-link>
-    </div>
     <div class="container shadow" style="margin-top: 30px; min-width: 350px;" id="product-details">
         <div v-if="error" class="alert alert-warning">{{ error }}</div>
         <div class="row p-2 gy-4">
