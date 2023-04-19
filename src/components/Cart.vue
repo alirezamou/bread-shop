@@ -10,7 +10,7 @@
                         <th>تعداد</th>
                         <th>قیمت واحد</th>
                         <th>قیمت کل</th>
-                        <th></th>
+                        <th v-if="viewOnly"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -19,6 +19,7 @@
                         <td>{{ getSize(item.productName, item.sizeIndex) }}</td>
                         <td>
                             <input
+                              v-if="!viewOnly"
                               type="number"
                               v-model="item.quantity"
                               class="form-control text-start"
@@ -26,10 +27,11 @@
                               min="1"
                               max="4"
                             />
+                            {{ viewOnly ? item.quantity : "" }}
                         </td>
                         <td>{{ item.price }} ت</td>
                         <td>{{ item.price * item.quantity }} ت</td>
-                        <td>
+                        <td v-if="!viewOnly">
                             <button class="btn" id="delete-item-btn" @click="deleteItem(item)">
                                 <fa-icon icon="fa-solid fa-times" />
                             </button>
@@ -37,13 +39,20 @@
                     </tr>
                 </tbody>
             </table>
-            <p class="display-6 mt-5 bg-light">قیمت کل: <strong>{{ totalCartPrice }}</strong></p>
-            <button class="btn btn-success" type="submit">پرداخت</button>
+            <p class="display-6 mt-5 bg-light fw-bold">قیمت کل: <strong>{{ totalCartPrice }}</strong></p>
+            <button v-if="!viewOnly" class="btn btn-success" type="submit">پرداخت</button>
         </form>
     </div>
 </template>
 <script>
 export default {
+    props: {
+        viewOnly: {
+            type: Boolean,
+            required: false,
+            default: false,
+        }
+    },
     data() {
         return {
             info: null,
