@@ -84,7 +84,7 @@ export default {
             if(this.selectedSize !== null) {
                 const order = {
                     productName: this.product.name,
-                    price: this.totalPrice,
+                    price: this.product.sizes[this.selectedSize].price,
                     quantity: this.quantity,
                     sizeIndex: this.selectedSize,
                 };
