@@ -1,5 +1,5 @@
 <template>
-    <div class="container shadow" style="margin-top: 30px; min-width: 350px;" id="product-details">
+    <div class="container shadow" style="min-width: 350px;" id="product-details">
         <div v-if="error" class="alert alert-warning">{{ error }}</div>
         <div class="row p-2 gy-4">
             <img :src="product.img" :alt="product.displayName" id="product-image" class="image-fluid col-sm-12 col-md-6 col-lg-5" />
