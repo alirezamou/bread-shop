@@ -42,7 +42,7 @@ export default {
 }
 .hero {
   height: 500px;
-  background-image: url("../assets/img/hero-background.jpg");
+  background-image: url("/img/hero-background.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
