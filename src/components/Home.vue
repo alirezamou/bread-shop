@@ -27,13 +27,10 @@
 </template>
 <script>
 export default {
-  async created() {
-    await this.$store.dispatch("getProducts");
-    this.products = this.$store.state.products;
-  },
-  data() {
-    return {
-      products: [],
+  name: "Home",
+  computed: {
+    products() {
+      return this.$store.state.products;
     }
   }
 }

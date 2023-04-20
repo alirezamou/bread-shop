@@ -93,6 +93,7 @@ const store = createStore({
       }
     },
   },
+  plugins: [({ dispatch }) => dispatch("getProducts")],
 });
 
 export default store;
